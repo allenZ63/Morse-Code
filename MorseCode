@@ -1,0 +1,62 @@
+package morsecode;
+
+import java.io.*;
+import java.util.*;
+
+public class MorseCode {
+
+	public static void main(String[] args) throws IOException {
+    	System.out.println("Encode or Decode");
+    	Scanner sc = new Scanner(System.in);
+    	String input = sc.nextLine();
+    	if (input.equals("Encode")) {
+        	BinaryTreeEncoder tree = new BinaryTreeEncoder();
+        	tree.setup();
+
+        	BufferedReader br = new BufferedReader(new FileReader("Morse Code.txt"));
+
+        	String text = "";
+
+        	while (text != null) {
+            	text = br.readLine();
+            	if (text == null) {
+                	text = " ";
+                	break;
+            	}
+            	String s = tree.search(text);
+            	if (s == null) {
+                	System.out.print(" ");
+            	} else if (s != null) {
+                	System.out.print(tree.search(text) + " ");
+            	}
+        	}
+        	System.out.println("");
+    	}
+    	if (input.equals("Decode")) {
+        	BinaryTreeDecoder tree = new BinaryTreeDecoder();
+        	tree.setup();
+
+        	BufferedReader br = new BufferedReader(new FileReader("Morse Code.txt"));
+
+        	String text = "";
+
+        	while (text != null) {
+            	text = br.readLine();
+            	if (text == null) {
+                	text = " ";
+                	break;
+            	}
+            	String s = tree.search(text);
+            	if (s == null) {
+                	System.out.print(" ");
+            	} else if (s != null) {
+                	System.out.print(tree.search(text));
+            	}
+        	}
+        	System.out.println("");
+    	}
+	}
+}
+
+
+
